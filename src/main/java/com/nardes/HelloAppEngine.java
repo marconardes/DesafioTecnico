@@ -31,8 +31,8 @@ public class HelloAppEngine extends HttpServlet {
 		Page<Blob> blobs = bucket.list();
 		for (Blob blob : blobs.iterateAll()) {
 		  // do something with the blob
-			System.out.println(blob.getName());
-			response.getWriter().println("Hello App Engine - Flexible!");
+			
+			response.getWriter().println(blob.getName());
 		}
     
   }
