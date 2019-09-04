@@ -78,7 +78,7 @@ public class AmazonS3Utils {
 		 
 		 metadata.setContentLength(fileF.length());
 		
-		PutObjectRequest request = new PutObjectRequest(Configuration.bucketName,path+filename,fileF);
+		PutObjectRequest request = new PutObjectRequest(Configuration.bucketName,path+"/"+filename,fileF);
 		request.setMetadata(metadata);
 		
 	    AccessControlList acl = new AccessControlList();
@@ -88,7 +88,7 @@ public class AmazonS3Utils {
 		interopClient.putObject(request);
 		
 		
-		return containsFile(path+filename);
+		return containsFile(path+"/"+filename);
 		
 	}
 
@@ -105,7 +105,7 @@ public class AmazonS3Utils {
 		List<URL> res= new ArrayList<URL>();
 		for (S3ObjectSummary s3ObjectSummary : sumaries) {
 			System.out.println(s3ObjectSummary.toString());
-			if(s3ObjectSummary.getKey().equals(path+filename))
+			if(s3ObjectSummary.getKey().equals(path+"/"+filename))
 			{
 				URL url = interopClient.getUrl(Configuration.bucketName, s3ObjectSummary.getKey());
 				System.out.println(url.toString());
