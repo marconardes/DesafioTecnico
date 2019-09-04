@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  title: Desafio tecnico
+  version: "1.0"
+  description: Desafio tecncio
+servers:
+  - url: //127.0.0.1:8080/
+paths:
+  /converter:
+    get:
+      responses:
+        "200":
+          description: Desc
+          x-oad-type: response
+        "404":
+          description: Desc
+          x-oad-type: response
+    post:
+      responses:
+        "201":
+          description: Arquivo envidao com sucesso
+          x-oad-type: response
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                upload:
+                  type: string
+                  format: binary
+                  x-oad-type: parameter
+              required:
+                - upload
+    x-oad-type: operation

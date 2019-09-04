@@ -2,6 +2,8 @@ package com.nardes.s3;
 
 import static org.junit.Assert.*;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.net.URL;
 import java.util.List;
 
@@ -17,6 +19,8 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Builder;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.nardes.Configuration;
+
 import io.findify.s3mock.S3Mock;
 
 public class AmazonS3UtilsTest {
@@ -30,7 +34,11 @@ public class AmazonS3UtilsTest {
 		AmazonS3Utils am3 = new AmazonS3Utils();
 		String file = "/home/marco/Downloads/des.pdf";
 		String filename="des.pdf";
-		assertTrue(am3.addFile(file, filename));
+		
+		
+		
+		
+		//assertTrue(am3.addFile(new File(file), filename,));
 		
 	}
 
@@ -61,9 +69,9 @@ public class AmazonS3UtilsTest {
 	public void listUrl() {
 		
 		AmazonS3Utils am3 = new AmazonS3Utils();
-		List<URL> res = am3.listUrl("sample.mkv");
-		
-		
+		List<URL> res = am3.listUrl(Configuration.folderToConvert, "sample.mkv");
+		assertNotNull(res);
+		assertEquals(1, res.size());
 		
 	}
 	
